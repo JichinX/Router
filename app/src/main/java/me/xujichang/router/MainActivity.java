@@ -1,16 +1,17 @@
 package me.xujichang.router;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import junit.framework.Test;
-
+import me.xujichang.routerannotations.annotation.RouterActivity;
 import me.xujichang.routerlib.rules.ActivityPatternRule;
 import me.xujichang.routerlib.wapper.RouterWrapper;
 
+@RouterActivity(flag = "main", remoteUrl = "")
 public class MainActivity extends AppCompatActivity {
+
+    private static final int REQUEST_NUMBER = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(View view) {
-        Intent intent = new Intent(this, TestA.class);
-        startActivity(intent);
+
         RouterWrapper
-                .createBuilder(ActivityPatternRule.SCHEME_ACTIVITY)
+                .createActivityBuilder(ActivityPatternRule.SCHEME_ACTIVITY)
                 .withContext(this)
-                .withFlag()
-                .invoke();
+                .withStartType(ActivityPatternRule.START_NORMAL)
+                .requestResult(12)
+                .invoke(TestA.class.getSimpleName());
     }
 }

@@ -26,4 +26,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':routerlib')
+    implementation files('libs/RouterAnnotations.jar')
+    annotationProcessor files('libs/RouterCompiler.jar')
 }

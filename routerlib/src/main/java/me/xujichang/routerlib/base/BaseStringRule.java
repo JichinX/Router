@@ -14,7 +14,7 @@ import me.xujichang.routerlib.interfaces.Rule;
 public abstract class BaseStringRule<V> implements Rule<String, V> {
     @Override
     public V invoke(Context context, String pattern) {
-        invokeString(context,pattern);
+        invokeString(context, pattern);
         return null;
     }
 
